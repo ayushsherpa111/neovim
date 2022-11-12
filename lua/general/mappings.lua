@@ -4,27 +4,28 @@ M.general_keys = {
     -- NOTE: Some mappings are assigned in the lspconfig `on_attach` function
     ["<Esc>"] = {":nohlsearch<CR>", "Exit search"},
     ["<C-s>"] = {":%s/\\v", "Replace", silent = false},
-    ["<S-q>"] = {":bdelete<CR>", "Delete buffer"},
+    ["<C-q>"] = {":bdelete<CR>", "Delete buffer"},
     -- Nvim tree
-    ["<S-e>"] = {require'nvim-tree'.toggle, "Toggle file explorer"},
+    ["<leader>l"] = {require'nvim-tree'.toggle, "Toggle file explorer"},
     -- Telescope and gitsigns
     ["/"] = {":lua require 'telescope.builtin'.live_grep {grep_open_files = true}<CR>", "Search text"},
     ["\\"] = {
         f = {":Telescope find_files<CR>", "Search file"},
         h = {":Telescope search_history<CR>", "Search history"},
-        p = {":Telescope commands<CR>", "Search command"}
+        p = {":Telescope commands<CR>", "Search command"},
+        b = {":Telescope buffers<CR>", "Search buffers"}
     },
     -- Compe
     ["<Tab>"] = {"v:lua.tab_complete()", "Next option", mode = "i", expr = true},
     ["<S-Tab>"] = {"v:lua.s_tab_complete()", "Previous option", mode = "i", expr = true},
     ["<CR>"] = {"compe#confirm('<CR>')", "Confirm selection", mode = "i", expr = true},
     -- Bufferline
-    ["<C-Right>"] = {":BufferLineCycleNext<CR>", "Next tab"},
-    ["<C-Left>"] = {":BufferLineCyclePrev<CR>", "Previous tab"},
-    ["<S-Right>"] = {":wincmd l<CR>", "Navigate right"},
-    ["<S-Left>"] = {":wincmd h<CR>", "Navigate left"},
-    ["<S-Up>"] = {":wincmd k<CR>", "Navigate up"},
-    ["<S-Down>"] = {":wincmd j<CR>", "Navigate down"}
+    ["<A-l>"] = {":BufferLineCycleNext<CR>", "Next tab"},
+    ["<A-h>"] = {":BufferLineCyclePrev<CR>", "Previous tab"},
+    ["<C-l>"] = {":wincmd l<CR>", "Navigate right"},
+    ["<C-h>"] = {":wincmd h<CR>", "Navigate left"},
+    ["<C-k>"] = {":wincmd k<CR>", "Navigate up"},
+    ["<C-j>"] = {":wincmd j<CR>", "Navigate down"}
 }
 
 M.visual_keys = {
@@ -33,11 +34,12 @@ M.visual_keys = {
 
 M.saga_keys = {
     name = "Lsp",
-    p = {"<cmd>lua require 'lspsaga.provider'.preview_definition()<CR>", "Preview definition"},
+    d = {"<cmd>lua require 'lspsaga.provider'.preview_definition()<CR>", "Preview definition"},
     r = {"<cmd>lua require 'lspsaga.rename'.rename()<CR>", "Rename definition"},
-    d = {"<cmd>lua require 'lspsaga.hover'.render_hover_doc()<CR>", "Hover doc"},
+    k = {"<cmd>lua require 'lspsaga.hover'.render_hover_doc()<CR>", "Hover doc"},
     a = {"<cmd>lua require 'lspsaga.codeaction'.code_action()<CR>", "Code action"},
     e = {":TroubleToggle<CR>", "Open error summary"},
+    q = {":Trouble quickfix<CR>", "Open quick fix summary"},
     s = {"<cmd>lua require 'lspsaga.provider'.lsp_finder()<CR>", "Lsp finder"},
     h = {"<cmd>lua require 'lspsaga.signaturehelp'.signature_help()<CR>", "Signature help"},
     ["]"] = {"<cmd>lua require 'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", "Go to next diagnostic"},

@@ -26,16 +26,15 @@ require "paq" {
     -- Looks
     {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
     "lukas-reineke/indent-blankline.nvim",
-    "hoob3rt/lualine.nvim",
+    "folke/tokyonight.nvim",
+    { "glepnir/galaxyline.nvim", branch= "main" },
     "akinsho/nvim-bufferline.lua",
+    "glepnir/dashboard-nvim",
     "lewis6991/gitsigns.nvim",
     "onsails/lspkind-nvim", -- incomplete
     "folke/trouble.nvim",
-    "marko-cerovac/material.nvim",
     -- Language specific
-    "JuliaEditorSupport/julia-vim",
     {"iamcco/markdown-preview.nvim", run = update_mkdp},
-    "akinsho/flutter-tools.nvim",
     "mhartington/formatter.nvim"
 }
 

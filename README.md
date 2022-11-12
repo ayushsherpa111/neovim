@@ -1,4 +1,5 @@
 # My NeoVim config
+## Forked from [solidassassin](https://github.com/solidassassin/nvim.git)
 
 **NOTE:** This config is created for Unix systems and would require some
 modifications to work on Windows.
@@ -35,3 +36,4 @@ Just run the command bellow once nvim is open:
 
 Each language server used requires to be installed.
 [This guide](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) will help you do so.
+

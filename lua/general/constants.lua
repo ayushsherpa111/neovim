@@ -1,10 +1,10 @@
 local M = {}
 
-M.theme = "material"
+M.theme = "tokyonight"
 
 M.icons = {
     error = "🗙",
-    warning = "▲",
+    warning = "",
     hint = "",
     info = "",
     close = "",

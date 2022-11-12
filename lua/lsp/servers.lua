@@ -28,7 +28,7 @@ _G.s_tab_complete = function()
     end
 end
 
-local function on_attach(client, bufnr)
+local function on_attach(client, buffer)
     utils.map {"<Esc>", [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]], mode = "t"}
     cmd [[au CursorHold <buffer> lua require'lspsaga.diagnostic'.show_line_diagnostics()]]
 
@@ -56,11 +56,6 @@ end
 local cap = vim.lsp.protocol.make_client_capabilities()
 cap.textDocument.completion.completionItem.snippetSupport = true
 
-require "flutter-tools".setup {
-    lsp = {
-        on_attach = on_attach
-    }
-}
 
 lsp_installer.on_server_ready(function(server)
     local opts = {

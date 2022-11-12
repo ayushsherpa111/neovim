@@ -6,9 +6,10 @@ require "presence":setup {
 }
 
 require "nvim-tree".setup {
+    auto_close = true,
     disable_netrw = true,
     hijack_netrw = true,
-    open_on_setup = true,
+    open_on_setup = false,
     ignore_ft_on_setup = {},
     open_on_tab = false,
     hijack_cursor = true,
@@ -36,6 +37,10 @@ require "nvim-tree".setup {
             warning = "▲",
             error = "🗙"
         }
+    },
+    filters = {
+          dotfiles = true,
+          custom = {}
     }
 }
 
@@ -49,6 +54,15 @@ require "formatter".setup {
                 return {
                     exe = "python",
                     args = {"-m", "black", get_name(0)},
+                    stdin = false
+                }
+            end
+        },
+        go = {
+            function()
+                return {
+                    exe = "gofmt",
+                    args = {"-w", get_name(0)},
                     stdin = false
                 }
             end
@@ -95,3 +109,4 @@ require "formatter".setup {
         }
     }
 }
+

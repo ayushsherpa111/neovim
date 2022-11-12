@@ -23,7 +23,8 @@ utils.set_opts {
     showmode = false,
     timeoutlen = 500,
     shortmess = "c",
-    wrap = false
+    wrap = false,
+    showmatch = true
 }
 
 vim.api.nvim_create_autocmd(

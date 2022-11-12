@@ -1,4 +1,4 @@
--- Not much here ¯\_(ツ)_/¯
+vim.g.mapleader = ","
 
 require "plugins"
 require "lsp"
