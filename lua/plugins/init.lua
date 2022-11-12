@@ -8,7 +8,6 @@ require "paq" {
     "nvim-lua/popup.nvim",
     "nvim-lua/plenary.nvim",
     "kyazdani42/nvim-web-devicons",
-    "L3MON4D3/LuaSnip", -- incomplete
     -- Lsp
     "neovim/nvim-lspconfig",
     "williamboman/nvim-lsp-installer",

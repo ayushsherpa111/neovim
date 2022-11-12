@@ -38,6 +38,7 @@ M.saga_keys = {
     r = {"<cmd>lua require 'lspsaga.rename'.rename()<CR>", "Rename definition"},
     k = {"<cmd>lua require 'lspsaga.hover'.render_hover_doc()<CR>", "Hover doc"},
     a = {"<cmd>lua require 'lspsaga.codeaction'.code_action()<CR>", "Code action"},
+    t = {":Lspsaga toggle_floaterm<CR>", "Toggle Floating Terminal"},
     e = {":TroubleToggle<CR>", "Open error summary"},
     q = {":Trouble quickfix<CR>", "Open quick fix summary"},
     s = {"<cmd>lua require 'lspsaga.provider'.lsp_finder()<CR>", "Lsp finder"},

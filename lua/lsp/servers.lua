@@ -28,7 +28,7 @@ _G.s_tab_complete = function()
     end
 end
 
-local function on_attach(client, buffer)
+local function on_attach(client, bufnr)
     utils.map {"<Esc>", [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]], mode = "t"}
     cmd [[au CursorHold <buffer> lua require'lspsaga.diagnostic'.show_line_diagnostics()]]
 

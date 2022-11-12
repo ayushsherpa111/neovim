@@ -110,3 +110,25 @@ require "formatter".setup {
     }
 }
 
+vim.api.nvim_create_autocmd(
+    "BufWritePre",
+    {
+        pattern = {"*"},
+        callback = function ()
+            vim.cmd [[FormatWrite]]
+        end
+    }
+)
+
+-- jump to last cursor position
+vim.api.nvim_create_autocmd(
+    "BufRead",
+    {
+        pattern = {"*"},
+        callback = function ()
+            vim.cmd [[
+                autocmd FileType <buffer> ++once if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
+            ]]
+        end
+    }
+)

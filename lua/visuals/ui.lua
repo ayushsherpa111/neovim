@@ -39,7 +39,7 @@ galaxyline.short_line_list = { 'NvimTree', 'vista', 'dbui', 'packer', 'lspsagaou
 gls.left[1] = {
   RainbowRed = {
     provider = function()
-      return '▊ '
+      return '▮ '
     end,
     highlight = { colors.blue, colors.bg },
   },
@@ -247,7 +247,7 @@ gls.right[8] = {
 gls.right[9] = {
   RainbowBlue = {
     provider = function()
-      return ' ▊'
+      return '▮'
     end,
     highlight = { colors.blue, colors.bg },
   },
