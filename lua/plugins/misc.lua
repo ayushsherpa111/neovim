@@ -6,7 +6,6 @@ require "presence":setup {
 }
 
 require "nvim-tree".setup {
-    auto_close = true,
     disable_netrw = true,
     hijack_netrw = true,
     open_on_setup = false,
@@ -39,8 +38,8 @@ require "nvim-tree".setup {
         }
     },
     filters = {
-          dotfiles = true,
-          custom = {}
+        dotfiles = true,
+        custom = {}
     }
 }
 
@@ -53,7 +52,7 @@ require "formatter".setup {
             function()
                 return {
                     exe = "python",
-                    args = {"-m", "black", get_name(0)},
+                    args = { "-m", "black", get_name(0) },
                     stdin = false
                 }
             end
@@ -62,7 +61,7 @@ require "formatter".setup {
             function()
                 return {
                     exe = "gofmt",
-                    args = {"-w", get_name(0)},
+                    args = { "-w", get_name(0) },
                     stdin = false
                 }
             end
@@ -71,7 +70,7 @@ require "formatter".setup {
             function()
                 return {
                     exe = "luafmt",
-                    args = {"--indent-count", 4, "--stdin"},
+                    args = { "--indent-count", 4, "--stdin" },
                     stdin = true
                 }
             end
@@ -80,7 +79,25 @@ require "formatter".setup {
             function()
                 return {
                     exe = "prettier",
-                    args = {"--stdin-filepath", vim.fn.fnameescape(get_name(0)), "--single-quote"},
+                    args = { "--stdin-filepath", vim.fn.fnameescape(get_name(0)), "--single-quote" },
+                    stdin = true
+                }
+            end
+        },
+        javascript = {
+            function()
+                return {
+                    exe = "prettier",
+                    args = { "--stdin-filepath", vim.fn.fnameescape(get_name(0)) },
+                    stdin = true
+                }
+            end
+        },
+        typescript = {
+            function()
+                return {
+                    exe = "prettier",
+                    args = { "--stdin-filepath", vim.fn.fnameescape(get_name(0)) },
                     stdin = true
                 }
             end
@@ -89,7 +106,7 @@ require "formatter".setup {
             function()
                 return {
                     exe = "prettier",
-                    args = {"--stdin-filepath", vim.fn.fnameescape(get_name(0))},
+                    args = { "--stdin-filepath", vim.fn.fnameescape(get_name(0)) },
                     stdin = true
                 }
             end
@@ -113,9 +130,9 @@ require "formatter".setup {
 vim.api.nvim_create_autocmd(
     "BufWritePre",
     {
-        pattern = {"*"},
-        callback = function ()
-            vim.cmd [[FormatWrite]]
+        pattern = { "*" },
+        callback = function()
+            vim.cmd [[Format]]
         end
     }
 )
@@ -124,8 +141,8 @@ vim.api.nvim_create_autocmd(
 vim.api.nvim_create_autocmd(
     "BufRead",
     {
-        pattern = {"*"},
-        callback = function ()
+        pattern = { "*" },
+        callback = function()
             vim.cmd [[
                 autocmd FileType <buffer> ++once if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
             ]]

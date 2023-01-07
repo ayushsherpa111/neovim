@@ -25,7 +25,7 @@ M.general_keys = {
     ["<C-l>"] = {":wincmd l<CR>", "Navigate right"},
     ["<C-h>"] = {":wincmd h<CR>", "Navigate left"},
     ["<C-k>"] = {":wincmd k<CR>", "Navigate up"},
-    ["<C-j>"] = {":wincmd j<CR>", "Navigate down"}
+    ["<C-j>"] = {":wincmd j<CR>", "Navigate down"},
 }
 
 M.visual_keys = {
@@ -43,9 +43,8 @@ M.saga_keys = {
     q = {":Trouble quickfix<CR>", "Open quick fix summary"},
     s = {"<cmd>lua require 'lspsaga.provider'.lsp_finder()<CR>", "Lsp finder"},
     h = {"<cmd>lua require 'lspsaga.signaturehelp'.signature_help()<CR>", "Signature help"},
-    ["]"] = {"<cmd>lua require 'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", "Go to next diagnostic"},
-    ["["] = {"<cmd>lua require 'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", "Go to previous diagnostic"},
-    ["/"] = {"<cmd>lua require 'lspsaga.floaterm'.open_float_terminal()<CR>", "Open terminal"}
+    ["]"] = {":Lspsaga diagnostic_jump_next<CR>", "Go to next diagnostic"},
+    ["["] = {":Lspsaga diagnostic_jump_prev<CR>", "Go to previous diagnostic"},
 }
 
 if os.execute("git status") == 0 then

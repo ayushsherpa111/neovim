@@ -30,6 +30,17 @@ utils.set_opts {
 vim.api.nvim_create_autocmd(
     "FileType",
     {
+        pattern = {"javascript", "javascriptreact", "typescript", "typescriptreact"},
+        callback = function ()
+            vim.opt.ts = 2
+            vim.opt.sw = 2
+        end
+    }
+)
+
+vim.api.nvim_create_autocmd(
+    "FileType",
+    {
         pattern = {"terraform"},
         callback = function ()
             vim.opt.ts = 2

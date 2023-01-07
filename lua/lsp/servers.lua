@@ -9,8 +9,8 @@ local luasnip = utils.prequire "luasnip"
 _G.tab_complete = function()
     if fn.pumvisible() == 1 then
         return utils.terms "<C-n>"
-    --elseif luasnip and luasnip.expand_or_jumpable() then
-    --    return utils.terms "<Plug>luasnip-expand-or-jump"
+        --elseif luasnip and luasnip.expand_or_jumpable() then
+        --    return utils.terms "<Plug>luasnip-expand-or-jump"
     elseif utils.check_back_space() then
         return utils.terms "<Tab>"
     else
@@ -28,19 +28,19 @@ _G.s_tab_complete = function()
     end
 end
 
-local function on_attach(client, bufnr)
-    utils.map {"<Esc>", [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]], mode = "t"}
+local function on_attach(client)
+    utils.map { "<Esc>", [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]], mode = "t" }
     cmd [[au CursorHold <buffer> lua require'lspsaga.diagnostic'.show_line_diagnostics()]]
 
-    if client.resolved_capabilities.document_formatting then
-        keys.saga_keys.f = {"<Cmd>lua vim.lsp.buf.formatting()<CR>", "Format text"}
-    elseif client.resolved_capabilities.document_range_formatting then
-        keys.saga_keys.f = {"<Cmd>lua vim.lsp.buf.range_formatting()<CR>", "Range format"}
+    if client.server_capabilities.document_formatting then
+        keys.saga_keys.f = { "<Cmd>lua vim.lsp.buf.formatting()<CR>", "Format text" }
+    elseif client.server_capabilities.document_range_formatting then
+        keys.saga_keys.f = { "<Cmd>lua vim.lsp.buf.range_formatting()<CR>", "Range format" }
     else
-        keys.saga_keys.f = {"<Cmd>:Format<CR>", "Format text"}
+        keys.saga_keys.f = { "<Cmd>:Format<CR>", "Format text" }
     end
 
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
         cmd [[
             augroup lsp_document_highlight
                 au! * <buffer>
@@ -67,7 +67,7 @@ lsp_installer.on_server_ready(function(server)
         opts.settings = {
             Lua = {
                 diagnostics = {
-                    globals = {"vim", "_G"}
+                    globals = { "vim", "_G" }
                 }
             }
         }

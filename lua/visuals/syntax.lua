@@ -1,7 +1,9 @@
 local g = vim.g
 
 require "nvim-treesitter.configs".setup {
-    ensure_installed = "all",
+    ensure_installed = {"javascript", "go", "rust",
+        "python", "lua", "c", "bash", "dockerfile",
+        "sql", "html", "css", "gitignore", "json"},
     highlight = {
         enable = true
     },
