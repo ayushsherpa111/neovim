@@ -23,9 +23,7 @@ require "tokyonight".setup {
 
 vim.cmd [[colorscheme tokyonight]]
 
-require "gitsigns".setup {
-    keymaps = {}
-}
+require "gitsigns".setup {}
 
 require "trouble".setup {}
 

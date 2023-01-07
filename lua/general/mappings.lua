@@ -1,5 +1,6 @@
 local M = {}
 
+
 M.general_keys = {
     -- NOTE: Some mappings are assigned in the lspconfig `on_attach` function
     ["<Esc>"] = {":nohlsearch<CR>", "Exit search"},
@@ -15,10 +16,6 @@ M.general_keys = {
         p = {":Telescope commands<CR>", "Search command"},
         b = {":Telescope buffers<CR>", "Search buffers"}
     },
-    -- Compe
-    ["<Tab>"] = {"v:lua.tab_complete()", "Next option", mode = "i", expr = true},
-    ["<S-Tab>"] = {"v:lua.s_tab_complete()", "Previous option", mode = "i", expr = true},
-    ["<CR>"] = {"compe#confirm('<CR>')", "Confirm selection", mode = "i", expr = true},
     -- Bufferline
     ["<A-l>"] = {":BufferLineCycleNext<CR>", "Next tab"},
     ["<A-h>"] = {":BufferLineCyclePrev<CR>", "Previous tab"},
