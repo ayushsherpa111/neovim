@@ -5,7 +5,6 @@ require("presence"):setup({
 	main_image = "file",
 })
 
-
 require("nvim-tree").setup({
 	disable_netrw = true,
 	hijack_netrw = true,
@@ -132,7 +131,6 @@ require("formatter").setup({
 		},
 	},
 })
-
 
 local cmd = vim.cmd
 

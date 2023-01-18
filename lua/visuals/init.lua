@@ -1,2 +1,2 @@
-require "visuals.syntax"
-require "visuals.ui"
+require("visuals.syntax")
+require("visuals.ui")

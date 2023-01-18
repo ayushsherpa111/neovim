@@ -61,6 +61,7 @@ vim.api.nvim_create_autocmd(
 )
 
 local which_key = require "which-key"
+keys.general_keys["<leader>"] = keys.dap_keys
 
 which_key.register(keys.general_keys)
 which_key.register(keys.visual_keys)

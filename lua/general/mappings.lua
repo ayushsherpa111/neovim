@@ -29,6 +29,16 @@ M.visual_keys = {
     ["<C-s>"] = {":s/\\v", "Replace selection", mode = "v", silent = false}
 }
 
+M.dap_keys = {
+    ["b"] = { ":DapToggleBreakpoint<cr>", "Toggle Breakpoint" },
+    ["c"] = { ":DapContinue<cr>", "Debugger Continue" },
+    ["t"] = { ":DapToggleRepl<cr>", "Debugger Toggle REPL" },
+    ["i"] = { ":DapStepInto<cr>", "Debugger Step Into" },
+    ["o"] = { ":DapStepOut<cr>", "Debugger Step out" },
+    ["O"] = { ":DapStepOver<cr>", "Debugger Step Over" },
+    ["k"] = { ":DapTerminate<cr>", "Debugger Terminate" },
+}
+
 M.saga_keys = {
     name = "Lsp",
     d = {"<cmd>lua require 'lspsaga.provider'.preview_definition()<CR>", "Preview definition"},

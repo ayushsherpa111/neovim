@@ -46,8 +46,13 @@ require("mason-tool-installer").setup({
 
 local cmd = vim.cmd
 
-local function on_attach(client)
-	vim.opt["omnifunc"] = "v:lua.vim.lsp.omnifunc"
+local function on_attach(client, bufnr)
+	local function buf_set_option(...)
+		vim.api.nvim_buf_set_option(bufnr, ...)
+	end
+
+	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+	-- vim.opt["omnifunc"] = "v:lua.vim.lsp.omnifunc"
 	-- vim.opt('omnifunc','v:lua.vim.lsp.omnifunc')
 
 	utils.map({ "<Esc>", [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]], mode = "t" })
@@ -76,7 +81,6 @@ end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-
 for _, value in ipairs(servers) do
 	local ls = require("lspconfig")[value]
 
@@ -91,26 +95,40 @@ for _, value in ipairs(servers) do
 				diagnostics = {
 					globals = { "vim", "_G" },
 				},
-                completion = {
-                    callSnippet = 'Replace'
-                }
+				completion = {
+					callSnippet = "Replace",
+				},
 			},
 		}
-    elseif value == "jedi_language_server" then
+	elseif value == "jedi_language_server" then
 		opts.settings = {
 			Python = {
-                completion = {
-                    callSnippet = 'Replace'
-                }
+				completion = {
+					callSnippet = "Replace",
+				},
 			},
 		}
-    elseif value == "rust_analyzer" then
+	elseif value == "rust_analyzer" then
 		opts.settings = {
 			Rust = {
-                completion = {
-                    callSnippet = 'Replace'
-                }
+				completion = {
+					callSnippet = "Replace",
+				},
 			},
+		}
+	elseif value == "gopls" then
+		opts.settings = {
+			gopls = {
+				experimentalPostfixCompletions = true,
+				analyses = {
+					unusedparams = true,
+					shadow = true,
+				},
+				staticcheck = true,
+			},
+		}
+		opts.init_options = {
+			usePlaceholders = true,
 		}
 	end
 
