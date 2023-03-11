@@ -3,6 +3,7 @@ local keys = require "general.mappings"
 
 local HOME = os.getenv("HOME")
 
+
 utils.set_opts {
     mouse = "a",
     ts = 4,
@@ -30,7 +31,7 @@ utils.set_opts {
 vim.api.nvim_create_autocmd(
     "FileType",
     {
-        pattern = {"javascript", "javascriptreact", "typescript", "typescriptreact"},
+        pattern = {"javascript", "javascriptreact", "typescript", "typescriptreact", "c"},
         callback = function ()
             vim.opt.ts = 2
             vim.opt.sw = 2

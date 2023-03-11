@@ -30,16 +30,19 @@ require("paq")({
 	"kyazdani42/nvim-tree.lua",
 	"ahmedkhalf/lsp-rooter.nvim",
 	"andweeb/presence.nvim",
+	"leoluz/nvim-dap-go",
 	-- Looks
 	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
 	"lukas-reineke/indent-blankline.nvim",
 	"folke/tokyonight.nvim",
+    'tiagovla/tokyodark.nvim',
+	"SmiteshP/nvim-navic",
 	{ "glepnir/galaxyline.nvim", branch = "main" },
 	"akinsho/nvim-bufferline.lua",
-	"glepnir/dashboard-nvim",
 	"lewis6991/gitsigns.nvim",
 	"onsails/lspkind-nvim", -- incomplete
 	"folke/trouble.nvim",
+	"numToStr/Navigator.nvim",
 	-- Language specific
 	{ "iamcco/markdown-preview.nvim", run = update_mkdp },
 	"mhartington/formatter.nvim",

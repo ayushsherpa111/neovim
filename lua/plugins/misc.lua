@@ -43,91 +43,60 @@ require("nvim-tree").setup({
 	},
 })
 
-local get_name = vim.api.nvim_buf_get_name
-
 require("formatter").setup({
-	logging = false,
+	logging = true,
+	log_level = vim.log.levels.warn,
 	filetype = {
 		python = {
+			require("formatter.filetypes.python").black,
+			-- function()
+			-- 	return {
+			-- 		exe = "python",
+			-- 		args = { "-m", "black" },
+			-- 		stdin = false,
+			-- 	}
+			-- end,
+		},
+		go = {
+			require("formatter.filetypes.go").gofmt,
+			require("formatter.filetypes.go").goimports,
+			require("formatter.filetypes.go").gofumpt,
+			require("formatter.filetypes.go").golines,
 			function()
 				return {
-					exe = "python",
-					args = { "-m", "black", get_name(0) },
+					exe = "gofmt",
+					args = { "-w" },
 					stdin = false,
 				}
 			end,
 		},
-		go = {
+		c = {
+            require("formatter.filetypes.c").clangformat,
 			function()
 				return {
-					exe = "gofmt",
-					args = { "-w", get_name(0) },
+					exe = "clang-format",
+					args = { "-i", "--style=LLVM" },
 					stdin = false,
 				}
 			end,
 		},
 		lua = {
-			function()
-				return {
-					exe = "stylua",
-					args = {
-						"--stdin-filepath",
-						vim.fn.fnameescape(get_name(0)),
-						"--",
-						"-",
-					},
-					stdin = true,
-				}
-			end,
+			require("formatter.filetypes.lua").stylua,
 		},
 		yaml = {
-			function()
-				return {
-					exe = "prettier",
-					args = { "--stdin-filepath", vim.fn.fnameescape(get_name(0)), "--single-quote" },
-					stdin = true,
-				}
-			end,
+			require("formatter.filetypes.javascript").prettier,
 		},
 		javascript = {
-			function()
-				return {
-					exe = "prettier",
-					args = { "--stdin-filepath", vim.fn.fnameescape(get_name(0)) },
-					stdin = true,
-				}
-			end,
+			require("formatter.filetypes.javascript").prettier,
 		},
 		typescript = {
-			function()
-				return {
-					exe = "prettier",
-					args = { "--stdin-filepath", vim.fn.fnameescape(get_name(0)) },
-					stdin = true,
-				}
-			end,
+			require("formatter.filetypes.javascript").prettier,
 		},
 		json = {
-			function()
-				return {
-					exe = "prettier",
-					args = { "--stdin-filepath", vim.fn.fnameescape(get_name(0)) },
-					stdin = true,
-				}
-			end,
+			require("formatter.filetypes.javascript").prettier,
 		},
 		markdown = {
-			function()
-				return {
-					exe = "prettier",
-					args = {
-						"--stdin-filepath",
-						vim.fn.fnameescape(get_name(0)),
-						"--prose-wrap always",
-					},
-					stdin = true,
-				}
-			end,
+			require("formatter.filetypes.javascript").prettier,
 		},
 	},
 })

@@ -1,5 +1,15 @@
 local utils = require("general.helpers")
 local keys = require("general.mappings")
+local navic = require("nvim-navic")
+
+navic.setup({
+	highlight = false,
+	separator = " ",
+	depth_limit = 0,
+	depth_limit_indicator = "..",
+	safe_output = false,
+})
+
 local servers = {
 	"sumneko_lua",
 	"rust_analyzer",
@@ -7,6 +17,7 @@ local servers = {
 	"bashls",
 	"gopls",
 	"jedi_language_server",
+	"clangd",
 }
 
 local etc = {
@@ -47,13 +58,14 @@ require("mason-tool-installer").setup({
 local cmd = vim.cmd
 
 local function on_attach(client, bufnr)
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
 
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-	-- vim.opt["omnifunc"] = "v:lua.vim.lsp.omnifunc"
-	-- vim.opt('omnifunc','v:lua.vim.lsp.omnifunc')
 
 	utils.map({ "<Esc>", [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]], mode = "t" })
 	cmd([[au CursorHold <buffer> lua require'lspsaga.diagnostic'.show_line_diagnostics()]])
@@ -76,6 +88,7 @@ local function on_attach(client, bufnr)
         ]])
 	end
 	keys.general_keys["<Space>"] = keys.saga_keys
+    keys.general_keys["<leader>g"] = keys.tele_keys
 	require("which-key").register(keys.general_keys)
 end
 
