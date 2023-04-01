@@ -67,6 +67,16 @@ if os.execute("git status &> /dev/null") == 0 then
 	local keys_git = M.general_keys["\\"]
 	keys_git.c = { ":Telescope git_commits<CR>", "Search commit history" }
 	keys_git.b = { ":Telescope git_branches<CR>", "Search branches" }
+	keys_git.s = { ":Telescope git_stash<CR>", "Search branches" }
+
+	M.git_keys.l = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle Line blame" }
+	M.git_keys.s = { ":Gitsigns stage_hunk<CR>", "Stage Hunk" }
+	M.git_keys.S = { ":Gitsigns stage_buffer<CR>", "Stage Buffer" }
+	M.git_keys.d = { ":Gitsigns toggle_deleted<CR>", "Toggle deleted lines" }
+	M.git_keys.D = { ":Gitsigns diffthis<CR>", "Diff current buffer" }
+	M.git_keys.h = { ":Gitsigns preview_hunk_inline<CR>", "Preview Hunk Inline" }
+	M.git_keys.R = { ":Gitsigns reset_buffer<CR>", "Reset Buffer" }
+	M.git_keys.r = { ":Gitsigns reset_hunk<CR>", "Reset Hunk" }
 end
 
 return M
