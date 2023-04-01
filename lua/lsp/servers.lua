@@ -18,6 +18,7 @@ local servers = {
 	"gopls",
 	"jedi_language_server",
 	"clangd",
+    "sqlls",
 }
 
 local etc = {

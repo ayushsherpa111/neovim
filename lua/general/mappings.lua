@@ -41,8 +41,8 @@ M.dap_keys = {
 	["c"] = { ":DapContinue<cr>", "Debugger Continue" },
 	["t"] = { ":DapToggleRepl<cr>", "Debugger Toggle REPL" },
 	["i"] = { ":DapStepInto<cr>", "Debugger Step Into" },
-	["o"] = { ":DapStepOut<cr>", "Debugger Step out" },
-	["O"] = { ":DapStepOver<cr>", "Debugger Step Over" },
+	["O"] = { ":DapStepOut<cr>", "Debugger Step out" },
+	["o"] = { ":DapStepOver<cr>", "Debugger Step Over" },
 	["k"] = { ":DapTerminate<cr>", "Debugger Terminate" },
 }
 
@@ -61,7 +61,7 @@ M.saga_keys = {
 	["["] = { ":Lspsaga diagnostic_jump_prev<CR>", "Go to previous diagnostic" },
 }
 
-if os.execute("git status") == 0 then
+if os.execute("git status &> /dev/null") == 0 then
 	local keys_git = M.general_keys["\\"]
 	keys_git.c = { ":Telescope git_commits<CR>", "Search commit history" }
 	keys_git.b = { ":Telescope git_branches<CR>", "Search branches" }

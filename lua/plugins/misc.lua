@@ -44,18 +44,9 @@ require("nvim-tree").setup({
 })
 
 require("formatter").setup({
-	logging = true,
-	log_level = vim.log.levels.warn,
 	filetype = {
 		python = {
 			require("formatter.filetypes.python").black,
-			-- function()
-			-- 	return {
-			-- 		exe = "python",
-			-- 		args = { "-m", "black" },
-			-- 		stdin = false,
-			-- 	}
-			-- end,
 		},
 		go = {
 			require("formatter.filetypes.go").gofmt,
