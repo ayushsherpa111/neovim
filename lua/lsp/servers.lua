@@ -90,6 +90,7 @@ local function on_attach(client, bufnr)
 	end
 	keys.general_keys["<Space>"] = keys.saga_keys
     keys.general_keys["<leader>g"] = keys.tele_keys
+    keys.general_keys["<leader>G"] = keys.git_keys
 	require("which-key").register(keys.general_keys)
 end
 

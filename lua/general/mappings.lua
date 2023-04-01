@@ -61,6 +61,8 @@ M.saga_keys = {
 	["["] = { ":Lspsaga diagnostic_jump_prev<CR>", "Go to previous diagnostic" },
 }
 
+M.git_keys = {}
+
 if os.execute("git status &> /dev/null") == 0 then
 	local keys_git = M.general_keys["\\"]
 	keys_git.c = { ":Telescope git_commits<CR>", "Search commit history" }
