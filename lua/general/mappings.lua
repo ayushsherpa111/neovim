@@ -9,7 +9,10 @@ M.general_keys = {
 		l = { require("nvim-tree").toggle, "Toggle file explorer" },
 	},
 	-- Telescope and gitsigns
-	["/"] = { ":lua require 'telescope.builtin'.live_grep {grep_open_files = true}<CR>", "Search text" },
+	["/"] = {
+		f = { ":lua require 'telescope.builtin'.live_grep {grep_open_files = true}<CR>", "Search text in open files" },
+		F = { ":Telescope live_grep<CR>", "Search text in all files" },
+	},
 	["\\"] = {
 		f = { ":Telescope find_files<CR>", "Search file" },
 		h = { ":Telescope search_history<CR>", "Search history" },
