@@ -17,6 +17,7 @@ require("nvim-treesitter.configs").setup({
 		"gitignore",
 		"json",
 	},
+	auto_install = true,
 	highlight = {
 		enable = true,
 	},

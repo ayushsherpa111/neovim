@@ -1,34 +1,26 @@
 local constants = require("general.constants")
 math.randomseed(os.time())
 
--- require("tokyonight").setup({
--- 	style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
--- 	transparent = true, -- Enable this to disable setting the background color
--- 	terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
--- 	styles = {
--- 		-- Style to be applied to different syntax groups
--- 		-- Value is any valid attr-list value for `:help nvim_set_hl`
--- 		comments = { italic = true },
--- 		keywords = { italic = true },
--- 		functions = { bold = true },
--- 		variables = {},
--- 		-- Background styles. Can be "dark", "transparent" or "normal"
--- 		sidebars = "dark", -- style for sidebars, see below
--- 		floats = "dark", -- style for floating windows
--- 	},
--- 	sidebars = { "qf", "help", "vista_kind", "terminal", "packer" },
--- 	day_brightness = 0.2,
--- 	hide_inactive_statusline = false,
--- 	dim_inactive = true,
--- })
+require("tokyodark").setup({
+	transparent_background = false, -- set background to transparent
+	gamma = 0.93, -- adjust the brightness of the theme
+	styles = {
+		comments = { italic = true }, -- style for comments
+		keywords = { italic = true }, -- style for keywords
+		identifiers = { italic = true }, -- style for identifiers
+		functions = {}, -- style for functions
+		variables = {}, -- style for variables
+	},
+	custom_highlights = {} or function(highlights, palette)
+		return {}
+	end, -- extend highlights
+	custom_palette = {} or function(palette)
+		return {}
+	end, -- extend palette
+	terminal_colors = true, -- enable terminal colors
+})
 
-vim.g.tokyodark_transparent_background = false
-vim.g.tokyodark_enable_italic_comment = true
-vim.g.tokyodark_enable_italic = true
-vim.g.tokyodark_color_gamma = "0.8"
-
-local cmd = vim.cmd
-cmd([[colorscheme tokyodark]])
+vim.cmd([[colorscheme tokyodark]])
 
 require("gitsigns").setup({})
 

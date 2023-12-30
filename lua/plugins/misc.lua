@@ -1,4 +1,4 @@
-require("lsp-rooter").setup({})
+-- require("lsp-rooter").setup({})
 require("Comment").setup()
 require("nvim-autopairs").setup({})
 require("presence"):setup({
@@ -8,8 +8,6 @@ require("presence"):setup({
 require("nvim-tree").setup({
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = false,
-	ignore_ft_on_setup = {},
 	open_on_tab = false,
 	hijack_cursor = true,
 	update_cwd = false,
@@ -62,11 +60,10 @@ require("formatter").setup({
 			end,
 		},
 		c = {
-            require("formatter.filetypes.c").clangformat,
 			function()
 				return {
 					exe = "clang-format",
-					args = { "-i", "--style=LLVM" },
+					args = { "-i", "-style=LLVM" },
 					stdin = false,
 				}
 			end,

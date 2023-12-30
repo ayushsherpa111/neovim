@@ -20,7 +20,7 @@ require("paq")({
 	"dcampos/cmp-snippy",
 	-- debugger
 	"mfussenegger/nvim-dap",
-	"jayp0521/mason-nvim-dap.nvim",
+    "jay-babu/mason-nvim-dap.nvim",
 	-- Telescope
 	"nvim-telescope/telescope.nvim",
 	-- Helpers
@@ -28,14 +28,14 @@ require("paq")({
 	"windwp/nvim-autopairs",
 	"folke/which-key.nvim",
 	"kyazdani42/nvim-tree.lua",
-	"ahmedkhalf/lsp-rooter.nvim",
+	-- "ahmedkhalf/lsp-rooter.nvim",
 	"andweeb/presence.nvim",
 	"leoluz/nvim-dap-go",
 	-- Looks
 	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
 	"lukas-reineke/indent-blankline.nvim",
 	"folke/tokyonight.nvim",
-    'tiagovla/tokyodark.nvim',
+	"tiagovla/tokyodark.nvim",
 	"SmiteshP/nvim-navic",
 	{ "glepnir/galaxyline.nvim", branch = "main" },
 	"akinsho/nvim-bufferline.lua",

@@ -4,10 +4,9 @@ M.general_keys = {
 	-- NOTE: Some mappings are assigned in the lspconfig `on_attach` function
 	["<Esc>"] = { ":nohlsearch<CR>", "Exit search" },
 	["<C-s>"] = { ":%s/\\v", "Replace", silent = false },
+	["<leader>h"] = { ":hide<cr>", "Hides buffer." },
 	["<C-q>"] = { ":bdelete<CR>", "Delete buffer" },
-	["<space>"] = {
-		l = { require("nvim-tree").toggle, "Toggle file explorer" },
-	},
+	["<leader>l"] = {  ":NvimTreeToggle<cr>", "Toggle Nvim Tree" },
 	-- Telescope and gitsigns
 	["/"] = {
 		f = { ":lua require 'telescope.builtin'.live_grep {grep_open_files = true}<CR>", "Search text in open files" },
@@ -66,7 +65,7 @@ M.saga_keys = {
 
 M.git_keys = {}
 
-if os.execute("git status &> /dev/null") == 0 then
+if os.execute("git status > /dev/null") == 0 then
 	local keys_git = M.general_keys["\\"]
 	keys_git.c = { ":Telescope git_commits<CR>", "Search commit history" }
 	keys_git.b = { ":Telescope git_branches<CR>", "Search branches" }

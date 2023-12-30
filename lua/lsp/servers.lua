@@ -11,14 +11,14 @@ navic.setup({
 })
 
 local servers = {
-	"sumneko_lua",
+	"lua_ls",
 	"rust_analyzer",
 	"tsserver",
 	"bashls",
 	"gopls",
 	"jedi_language_server",
 	"clangd",
-    "sqlls",
+	"sqlls",
 }
 
 local etc = {
@@ -89,8 +89,8 @@ local function on_attach(client, bufnr)
         ]])
 	end
 	keys.general_keys["<Space>"] = keys.saga_keys
-    keys.general_keys["<leader>g"] = keys.tele_keys
-    keys.general_keys["<leader>G"] = keys.git_keys
+	keys.general_keys["<leader>g"] = keys.tele_keys
+	keys.general_keys["<leader>G"] = keys.git_keys
 	require("which-key").register(keys.general_keys)
 end
 
@@ -104,7 +104,7 @@ for _, value in ipairs(servers) do
 		capabilities = capabilities,
 	}
 
-	if value == "sumneko_lua" then
+	if value == "lua_ls" then
 		opts.settings = {
 			Lua = {
 				diagnostics = {
