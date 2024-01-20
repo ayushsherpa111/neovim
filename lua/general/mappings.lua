@@ -1,4 +1,5 @@
 local M = {}
+local utils = require("general.helpers")
 
 M.general_keys = {
 	-- NOTE: Some mappings are assigned in the lspconfig `on_attach` function
@@ -6,7 +7,7 @@ M.general_keys = {
 	["<C-s>"] = { ":%s/\\v", "Replace", silent = false },
 	["<leader>h"] = { ":hide<cr>", "Hides buffer." },
 	["<C-q>"] = { ":bdelete<CR>", "Delete buffer" },
-	["<leader>l"] = {  ":NvimTreeToggle<cr>", "Toggle Nvim Tree" },
+	["<leader>l"] = { ":NvimTreeToggle<cr>", "Toggle Nvim Tree" },
 	-- Telescope and gitsigns
 	["/"] = {
 		f = { ":lua require 'telescope.builtin'.live_grep {grep_open_files = true}<CR>", "Search text in open files" },
@@ -36,6 +37,7 @@ M.tele_keys = {
 	d = { ":Telescope lsp_definitions<cr>", "Get Definitions" },
 	r = { ":Telescope lsp_references<cr>", "Get References" },
 	i = { ":Telescope lsp_implementations<cr>", "Get Implementations" },
+	s = { ":Telescope lsp_document_symbols<cr>", "Get Implementations" },
 }
 
 M.dap_keys = {
@@ -65,11 +67,12 @@ M.saga_keys = {
 
 M.git_keys = {}
 
-if os.execute("git status > /dev/null") == 0 then
+if utils.file_exists(".git/config") then
 	local keys_git = M.general_keys["\\"]
 	keys_git.c = { ":Telescope git_commits<CR>", "Search commit history" }
 	keys_git.b = { ":Telescope git_branches<CR>", "Search branches" }
 	keys_git.s = { ":Telescope git_stash<CR>", "Search branches" }
+	keys_git.f = { ":Telescope git_files<CR>", "Search branches" }
 
 	M.git_keys.l = { ":Gitsigns toggle_current_line_blame<CR>", "Toggle Line blame" }
 	M.git_keys.s = { ":Gitsigns stage_hunk<CR>", "Stage Hunk" }

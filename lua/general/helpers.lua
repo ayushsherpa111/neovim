@@ -41,4 +41,9 @@ function M.check_back_space()
     return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+function M.file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
 return M
